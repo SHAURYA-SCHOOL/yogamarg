@@ -10,11 +10,13 @@
 <br style="line-height: 200%;">
 <div class="content">
 <h2>Profile</h2>
+
 <span>Age Group: </span><span id="age"></span>
 <br>
 <span>Breathing Problems: </span><span id="brt"></span>
 <br>
-<span>Muscle Groups: </span><span id="mus"></span>
+<span>Muscle Groups: </span><span id="mus"></span><br>
+<button onclick="window.location.assign('pers.html')" style="width: 50%;">Edit</button>
 </div>
 <br style="line-height: 200%;">
 <div class="content">
@@ -64,12 +66,12 @@
         { category: "Breathing Problems", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20–30 sec" },
         { category: "Breathing Problems", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 20 sec" },
 
-        { category: "All Muscle Groups", pose: "Surya Namaskar", muscle: "Full Body", sets: "6 rounds" },
-        { category: "All Muscle Groups", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30 sec" },
-        { category: "All Muscle Groups", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
-        { category: "All Muscle Groups", pose: "Virabhadrasana II", muscle: "Legs, Hips, Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "All Muscle Groups", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 30 sec" },
-        { category: "All Muscle Groups", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" }
+        { category: "Challenge Exercises", pose: "Surya Namaskar", muscle: "Full Body", sets: "6 rounds" },
+        { category: "Challenge Exercises", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30 sec" },
+        { category: "Challenge Exercises", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
+        { category: "Challenge Exercises", pose: "Virabhadrasana II", muscle: "Legs, Hips, Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "Challenge Exercises", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 30 sec" },
+        { category: "Challenge Exercises", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" }
     ];
 
     function displayRecommendedPoses() {
@@ -86,12 +88,15 @@
         muscles = JSON.parse(localStorage.getItem("muscles") || "[]");
 
         categories = [];
+        if (breathing === "yes") {categories.push("Breathing Problems");}
+        else {
         if (age === "child") categories.push("Ages 5–18");
         if (age === "adult") categories.push("Ages 18–40");
         if (age === "old") categories.push("Ages 40+");
-        if (breathing === "yes") categories.push("Breathing Problems");
+    }
+        
 
-        categories.push("All Muscle Groups"); // Always include general recommendations
+        categories.push("Challenge Exercises"); // Always include general recommendations
 
         tbody = document.getElementById("yogaBody");
         tbody.innerHTML = ""; // Clear old
