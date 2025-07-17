@@ -49,3 +49,13 @@ button:hover {
     background-color: white;
     color: black;
 }
+table {
+    width: 80%;
+
+    border-collapse: collapse;
+    font-size: 100%;
+    border: 1px solid white;
+}
+table,td,th {
+    border: 1px solid white;
+}

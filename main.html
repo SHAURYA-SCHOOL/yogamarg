@@ -1,0 +1,117 @@
+<script src="check.js"></script>
+<script src="vald.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="header">
+<h1>Yogamarg</h1>
+<h2>Fighting Obesity with Spirtuality</h2>
+</div>
+<br style="line-height: 200%;">
+<div class="content">
+<h2>Profile</h2>
+<span>Age Group: </span><span id="age"></span>
+<br>
+<span>Breathing Problems: </span><span id="brt"></span>
+<br>
+<span>Muscle Groups: </span><span id="mus"></span>
+</div>
+<br style="line-height: 200%;">
+<div class="content">
+    <h2>Your Exercise Table:</h2>
+       <table id="yogaTable"">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Yoga Pose (Sanskrit)</th>
+                <th>Target Muscle Group</th>
+                <th>Daily Sets/Reps</th>
+            </tr>
+        </thead>
+        <tbody id="yogaBody">
+            <!-- Will be filled by JS -->
+        </tbody>
+    </table>
+</div>
+<script>
+    const yogaData = [
+        // Format: { category, pose, muscle, sets }
+        { category: "Ages 5–18", pose: "Vrikshasana", muscle: "Legs", sets: "2 sets, hold 30 sec each leg" },
+        { category: "Ages 5–18", pose: "Navasana", muscle: "Core", sets: "3 sets, hold 20 sec" },
+        { category: "Ages 5–18", pose: "Bhujangasana", muscle: "Back", sets: "3 sets, hold 20–30 sec" },
+        { category: "Ages 5–18", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "Ages 5–18", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20 sec" },
+        { category: "Ages 5–18", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 30 sec" },
+
+        { category: "Ages 18–40", pose: "Virabhadrasana II", muscle: "Legs", sets: "2 sets each side, hold 30 sec" },
+        { category: "Ages 18–40", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30–45 sec" },
+        { category: "Ages 18–40", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
+        { category: "Ages 18–40", pose: "Garudasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "Ages 18–40", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 20–30 sec" },
+        { category: "Ages 18–40", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" },
+
+        { category: "Ages 40+", pose: "Tadasana", muscle: "Legs", sets: "3 sets, hold 1 min" },
+        { category: "Ages 40+", pose: "Ardha Navasana", muscle: "Core", sets: "2 sets, hold 15–20 sec" },
+        { category: "Ages 40+", pose: "Marjaryasana-Bitilasana", muscle: "Back", sets: "3 rounds of 5 breaths" },
+        { category: "Ages 40+", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "Ages 40+", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20 sec" },
+        { category: "Ages 40+", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 20–30 sec" },
+
+        { category: "Breathing Problems", pose: "Tadasana", muscle: "Legs", sets: "3 sets, hold 1 min" },
+        { category: "Breathing Problems", pose: "Navasana", muscle: "Core", sets: "2 sets, hold 15 sec" },
+        { category: "Breathing Problems", pose: "Bhujangasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
+        { category: "Breathing Problems", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "Breathing Problems", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20–30 sec" },
+        { category: "Breathing Problems", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 20 sec" },
+
+        { category: "All Muscle Groups", pose: "Surya Namaskar", muscle: "Full Body", sets: "6 rounds" },
+        { category: "All Muscle Groups", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30 sec" },
+        { category: "All Muscle Groups", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
+        { category: "All Muscle Groups", pose: "Virabhadrasana II", muscle: "Legs, Hips, Shoulders", sets: "2 sets each side, hold 30 sec" },
+        { category: "All Muscle Groups", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 30 sec" },
+        { category: "All Muscle Groups", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" }
+    ];
+
+    function displayRecommendedPoses() {
+            var agel = document.getElementById("age");
+    var breathing = document.getElementById("brt"); 
+    var muscles = document.getElementById("mus");
+    const brtd = JSON.parse(localStorage.getItem("muscles")) || [];
+    muscles.textContent = brtd.length ? brtd.join(", ") : "None selected";
+    agel.innerHTML = localStorage.getItem("age");
+    breathing.innerHTML = localStorage.getItem("breathing");
+    muscles.innerHTML = brtd;
+        age = localStorage.getItem("age");
+        breathing = localStorage.getItem("breathing");
+        muscles = JSON.parse(localStorage.getItem("muscles") || "[]");
+
+        categories = [];
+        if (age === "child") categories.push("Ages 5–18");
+        if (age === "adult") categories.push("Ages 18–40");
+        if (age === "old") categories.push("Ages 40+");
+        if (breathing === "yes") categories.push("Breathing Problems");
+
+        categories.push("All Muscle Groups"); // Always include general recommendations
+
+        tbody = document.getElementById("yogaBody");
+        tbody.innerHTML = ""; // Clear old
+
+        yogaData.forEach(entry => {
+            entryMuscle = entry.muscle.toLowerCase();
+            matchesCategory = categories.includes(entry.category);
+            matchesMuscle = muscles.some(m => entryMuscle.includes(m.toLowerCase()));
+
+            if (matchesCategory && matchesMuscle) {
+                const row = `<tr>
+                    <td>${entry.category}</td>
+                    <td>${entry.pose}</td>
+                    <td>${entry.muscle}</td>
+                    <td>${entry.sets}</td>
+                </tr>`;
+                tbody.insertAdjacentHTML("beforeend", row);
+            }
+        });
+    }
+
+    window.onload = displayRecommendedPoses;
+</script>

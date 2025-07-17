@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="header">
+    <h1>Yogamarg</h1>
+    <h2>Fighting Obesity with Spirituality.</h2>
+</div>
+
+<br style="line-height: 200%;">
+
+<div class="content">
+    <h2>Personalization</h2>
+    <p>1: Please enter your age group below.</p>
+
+    <form action="main.html" method="post" onsubmit="return validateForm()">
+        <select name="age" id="age">
+            <option value="">--Select Age Group--</option>
+            <option value="child">Child (5-18)</option>
+            <option value="adult">Adult (18-40)</option>
+            <option value="old">Senior (40+)</option>
+        </select>
+
+        <p>2: Please inform if you have any breathing problems.</p>
+        <input type="radio" id="yes" name="breathing" value="yes">
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="breathing" value="no">
+        <label for="no">No</label><br>
+
+        <p>3: Please select the muscle group(s) you want to exercise.</p>
+        <input type="checkbox" id="legs" name="muscle" value="Legs">
+        <label for="legs">Legs</label><br> 
+
+        <input type="checkbox" id="core" name="muscle" value="Core">
+        <label for="core">Core</label><br> 
+
+        <input type="checkbox" id="back" name="muscle" value="Back">
+        <label for="back">Back</label><br> 
+
+        <input type="checkbox" id="shoulders" name="muscle" value="Shoulders">
+        <label for="shoulders">Shoulders</label><br> 
+
+        <input type="checkbox" id="hips" name="muscle" value="Hips">
+        <label for="hips">Hips</label><br> 
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script src="vald.js"></script>
