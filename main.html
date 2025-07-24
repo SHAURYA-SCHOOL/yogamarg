@@ -21,102 +21,37 @@
 <br style="line-height: 200%;">
 <div class="content">
     <h2>Your Exercise Table:</h2>
-       <table id="yogaTable"">
+       <table id="yogaTable">
         <thead>
             <tr>
                 <th>Category</th>
-                <th>Yoga Pose (Sanskrit)</th>
+                <th>Yoga Pose</th>
                 <th>Target Muscle Group</th>
                 <th>Daily Sets/Reps</th>
             </tr>
         </thead>
         <tbody id="yogaBody">
-            <!-- Will be filled by JS -->
         </tbody>
     </table>
 </div>
-<script>
-    const yogaData = [
-        // Format: { category, pose, muscle, sets }
-        { category: "Ages 5–18", pose: "Vrikshasana", muscle: "Legs", sets: "2 sets, hold 30 sec each leg" },
-        { category: "Ages 5–18", pose: "Navasana", muscle: "Core", sets: "3 sets, hold 20 sec" },
-        { category: "Ages 5–18", pose: "Bhujangasana", muscle: "Back", sets: "3 sets, hold 20–30 sec" },
-        { category: "Ages 5–18", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "Ages 5–18", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20 sec" },
-        { category: "Ages 5–18", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 30 sec" },
+<DIV class="content">
+    <h2>Tutorials</h2>
+    <a href="https://youtu.be/A9OzH3kYvyU?si=j5E7xTUFk6lP_Hoq">Vrikshasana, </a>
+    <a href="https://youtu.be/8KsyQvwi85Q?si=Op3yr58preBywxTS">Navasana, </a>
+    <a href="https://youtu.be/UYDTHxVh2EE?si=XHAZdNT_DYTITU0i">Bhujangasana, </a>
+    <a href="https://youtu.be/6j3vnZEF_Oc?si=wAr3m7VqEBmJvwFR">Gomukhasana, </a>
+    <a href="https://youtu.be/rWwR9FFyzNQ?si=Pktjr4SvcG7eYw4j">Matsyasana, </a>
+    <a href="https://youtu.be/cNvVl-Q3GD4?si=E_sy68d4nWrh51iT">Setu Bandhasana, </a>
+    <a href="https://youtu.be/Mn6RSIRCV3w?si=LhoYeoyzaoACsq79">Virabhadrasana II, </a>
+    <a href="https://youtu.be/LrqECYmDexQ?si=P84EcpvemhL_G_Zk">Phalakasana, </a>
+    <a href="https://youtu.be/uI7l30smBaU?si=e6-kplRKbTmrtuzF">Garudasana , </a>
+    <a href="https://youtu.be/vmYFqSk4JtY?si=aR-RH4B6xfo96XQB">Ustrasana, </a>
+    <a href="https://youtu.be/qQZOlIHMlmA?si=meQ20FflnPXt4PWg">Utkatasana, </a>
+    <a href="https://youtu.be/TmnVRKygyk0?si=abcmnFSWUQ7czJIr">Tadasana, </a>
+    <a href="https://youtu.be/CePu8V3vCvg?si=8NpaAEebOTLmoUPI">Ardha Navasana, </a>
+    <a href="https://youtu.be/Ov65nNSWrfw?si=L60VqJX4TChUTje7">Marjaryasana-Bitilasana, </a>
+    <a href="https://youtu.be/AEJCdPcVy8I?si=opJuYPeZ5W92iJd4">Surya Namaskar, </a>
 
-        { category: "Ages 18–40", pose: "Virabhadrasana II", muscle: "Legs", sets: "2 sets each side, hold 30 sec" },
-        { category: "Ages 18–40", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30–45 sec" },
-        { category: "Ages 18–40", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
-        { category: "Ages 18–40", pose: "Garudasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "Ages 18–40", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 20–30 sec" },
-        { category: "Ages 18–40", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" },
-
-        { category: "Ages 40+", pose: "Tadasana", muscle: "Legs", sets: "3 sets, hold 1 min" },
-        { category: "Ages 40+", pose: "Ardha Navasana", muscle: "Core", sets: "2 sets, hold 15–20 sec" },
-        { category: "Ages 40+", pose: "Marjaryasana-Bitilasana", muscle: "Back", sets: "3 rounds of 5 breaths" },
-        { category: "Ages 40+", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "Ages 40+", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20 sec" },
-        { category: "Ages 40+", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 20–30 sec" },
-
-        { category: "Breathing Problems", pose: "Tadasana", muscle: "Legs", sets: "3 sets, hold 1 min" },
-        { category: "Breathing Problems", pose: "Navasana", muscle: "Core", sets: "2 sets, hold 15 sec" },
-        { category: "Breathing Problems", pose: "Bhujangasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
-        { category: "Breathing Problems", pose: "Gomukhasana (arms only)", muscle: "Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "Breathing Problems", pose: "Matsyasana", muscle: "Chest", sets: "2 sets, hold 20–30 sec" },
-        { category: "Breathing Problems", pose: "Setu Bandhasana", muscle: "Hips", sets: "3 sets, hold 20 sec" },
-
-        { category: "Challenge Exercises", pose: "Surya Namaskar", muscle: "Full Body", sets: "6 rounds" },
-        { category: "Challenge Exercises", pose: "Phalakasana", muscle: "Core", sets: "3 sets, hold 30 sec" },
-        { category: "Challenge Exercises", pose: "Salabhasana", muscle: "Back", sets: "3 sets, hold 20 sec" },
-        { category: "Challenge Exercises", pose: "Virabhadrasana II", muscle: "Legs, Hips, Shoulders", sets: "2 sets each side, hold 30 sec" },
-        { category: "Challenge Exercises", pose: "Ustrasana", muscle: "Chest", sets: "2 sets, hold 30 sec" },
-        { category: "Challenge Exercises", pose: "Utkatasana", muscle: "Hips", sets: "3 sets, hold 30 sec" }
-    ];
-
-    function displayRecommendedPoses() {
-            var agel = document.getElementById("age");
-    var breathing = document.getElementById("brt"); 
-    var muscles = document.getElementById("mus");
-    const brtd = JSON.parse(localStorage.getItem("muscles")) || [];
-    muscles.textContent = brtd.length ? brtd.join(", ") : "None selected";
-    agel.innerHTML = localStorage.getItem("age");
-    breathing.innerHTML = localStorage.getItem("breathing");
-    muscles.innerHTML = brtd;
-        age = localStorage.getItem("age");
-        breathing = localStorage.getItem("breathing");
-        muscles = JSON.parse(localStorage.getItem("muscles") || "[]");
-
-        categories = [];
-        if (breathing === "yes") {categories.push("Breathing Problems");}
-        else {
-        if (age === "child") categories.push("Ages 5–18");
-        if (age === "adult") categories.push("Ages 18–40");
-        if (age === "old") categories.push("Ages 40+");
-    }
-        
-
-        categories.push("Challenge Exercises"); // Always include general recommendations
-
-        tbody = document.getElementById("yogaBody");
-        tbody.innerHTML = ""; // Clear old
-
-        yogaData.forEach(entry => {
-            entryMuscle = entry.muscle.toLowerCase();
-            matchesCategory = categories.includes(entry.category);
-            matchesMuscle = muscles.some(m => entryMuscle.includes(m.toLowerCase()));
-
-            if (matchesCategory && matchesMuscle) {
-                const row = `<tr>
-                    <td>${entry.category}</td>
-                    <td>${entry.pose}</td>
-                    <td>${entry.muscle}</td>
-                    <td>${entry.sets}</td>
-                </tr>`;
-                tbody.insertAdjacentHTML("beforeend", row);
-            }
-        });
-    }
-
-    window.onload = displayRecommendedPoses;
-</script>
+</DIV>
+<script src="yoga.js"></script>
+    `
