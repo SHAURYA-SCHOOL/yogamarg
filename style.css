@@ -1,5 +1,8 @@
 body {
     background-color: rgb(21, 22, 36);
+    background: url(blue_abstract_lines_2.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     color: rgb(227, 221, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
@@ -49,29 +52,44 @@ h1{
 }
 .content {
     border-radius: 12.5px;
-    background-color: rgba(0, 0, 0, 0.144);
-    padding-bottom: 1%;
-    padding-top: 0.5%;
+    background-color: rgba(0, 24, 90, 0.144);
+    padding: 1.5% 1.5%;
     font-size: 120%;
     font-family: sans-serif;
     text-align: left;
     margin-left: 10%;
     margin-right: 10%;
-    padding-left: 2.5%;
     border: 1px solid rgba(192, 212, 255, 0.336);
+     transition: all 0.5s ease-in-out;
+    backdrop-filter: blur(15px) brightness(0.95) ;
     
 } 
+.content:hover {
+    border-radius: 12.5px;
+    background-color: rgba(61, 82, 107, 0.356);
+    padding: 2% 2%;
+    font-size: 120%;
+    font-family: sans-serif;
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 15%;
+    border: 1px solid rgba(255, 255, 255, 0.603);
+    transition: all 0.5s ease-in-out;
+}
 button {
     background-color: black;
     color: white;
     font-size: 100%;
-    padding: 0.5% 0.5%;
+    padding: 0.8% 0.8%;
     border: 1px white solid;
     cursor: pointer;
-    border-radius: 25px;
+     transition: all 0.25s ease-in-out;
+    border-radius: 12.5px;
 }
 button:hover {
+     transition: all 0.25s ease-in-out;
     background-color: white;
+    font-size: 120%;
     color: black;
 }
 table {
