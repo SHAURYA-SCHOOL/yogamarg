@@ -43,12 +43,14 @@ const yogaData = [
             window.location.assign("pers.html");
             return;
         }
+    var name = document.getElementById("username");
             var agel = document.getElementById("age");
     var breathing = document.getElementById("brt"); 
     var muscles = document.getElementById("mus");
     const brtd = JSON.parse(localStorage.getItem("muscles")) || [];
     muscles.textContent = brtd.length ? brtd.join(", ") : "None selected";
     agel.innerHTML = localStorage.getItem("age");
+    name.innerHTML = localStorage.getItem("name")
     breathing.innerHTML = localStorage.getItem("breathing");
     muscles.innerHTML = brtd;
         age = localStorage.getItem("age");

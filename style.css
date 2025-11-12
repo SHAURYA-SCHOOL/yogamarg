@@ -1,14 +1,16 @@
 body {
-    background-color: rgb(21, 22, 36);
-    background: url(blue_abstract_lines_2.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-color: rgb(3, 0, 41);
     color: rgb(227, 221, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: 150%;
-
+        animation: bgmove 50s ease-in-out infinite;
+         background: url(blue_abstract_lines_2.jpg);
+    background-size: 150% 150%;
+    background-repeat: repeat;
+    background-position: 0;
 }
+
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -104,4 +106,33 @@ table {
 table,td,th {
     border: 1px solid rgba(192, 212, 255, 0.521);
 
+}
+@keyframes bgmove {
+            0% { background-position: 100% 100%; }
+        50% { background-position: 0% 0%; backdrop-filter: brightness(2.0); }
+        100% { background-position: 100% 100%; }
+}
+input[type=text], select {
+    padding: 20px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.993);
+    width: 75%;
+     transition: all 0.25s ease-in-out;
+}
+select {
+    width: 50%;
+}
+h3 {
+    font-size: 50%;
+    color: rgba(255, 255, 255, 0.356);
+}
+input[type=text]:hover, select:hover {
+         transition: all 0.25s ease-in-out;
+    background-color: white;
+    font-size: 120%;
+    color: black;
+}
+.pass  {
+    content: "*****";
 }
